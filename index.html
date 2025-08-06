@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insight</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Insight</h1>
+            <div class="connection-status">
+                <span id="connectionStatus" class="status-indicator">●</span>
+                <span id="connectionText">Checking connection...</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Context Panel -->
+            <div class="context-panel">
+                <div class="panel-header">
+                    <h2>Context Files</h2>
+                    <div class="file-controls">
+                        <button id="selectFilesBtn" class="btn btn-primary">Select Files</button>
+                        <button id="selectFolderBtn" class="btn btn-secondary">Select Folder</button>
+                        <button id="clearContextBtn" class="btn btn-danger">Clear All</button>
+                    </div>
+                </div>
+                
+                <div class="context-info">
+                    <span id="fileCount">0 files loaded</span>
+                    <span id="totalSize">0 KB</span>
+                </div>
+
+                <div id="contextFiles" class="context-files">
+                    <div class="empty-state">
+                        <p>No files loaded. Select files or a folder to add context.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Panel -->
+            <div class="chat-panel">
+                <div class="panel-header">
+                    <h2>Chat</h2>
+                    <div class="model-selector">
+                        <label for="modelSelect">Model:</label>
+                        <select id="modelSelect" class="model-select">
+                            <option value="gpt-oss:20B">gpt-oss:20B (default)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="chatMessages" class="chat-messages">
+                    <div class="welcome-message">
+                        <h3>Welcome to Insight!</h3>
+                        <p>Load some files to provide context, then start chatting with your AI assistant.</p>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="chatInput" 
+                            placeholder="Ask a question about your context files..."
+                            rows="2"
+                        ></textarea>
+                        <button id="sendBtn" class="btn btn-primary send-btn" disabled>
+                            <span>Send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p id="loadingText">Processing...</p>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
